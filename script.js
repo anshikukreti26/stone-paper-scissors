@@ -3,22 +3,29 @@ let compScore = 0;
 
 const choices = document.querySelectorAll(".choice");
 const msg =  document.querySelector("#msg");
+const userScorePara = document.querySelector("#user-score");
+const compScorePara = document.querySelector("#comp-score");
 
 const genCompChoice = () => {
     let options = ["stone", "paper", "scissors"];
-    const randInd = Math.floor(Math.random() * 3);
-    return options[randIx];
+    const randIdx = Math.floor(Math.random() * 3);
+    return options[randIdx];
 }
 
 const drawGame = () => {
     msg.innerText = "Game Draw";
+    msg.style.backgroundColor = "black";
 }
 
 const showWinner = (userWin, userChoice, compChoice) => {
     if(userWin){
+        userScore++;
+        userScorePara.innerText = userScore;
         msg.innerText = `You Win ! ${userChoice} beats ${compChoice}`;
         msg.style.backgroundColor = "green";
     } else {
+        compScore++;
+        compScorePara.innerText = compScore;
         msg.innerText = `You Lose ! ${compChoice} beats ${userChoice}`;
         msg.style.backgroundColor = "red";
     }
